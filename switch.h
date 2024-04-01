@@ -17,7 +17,7 @@ class SwitchRelays {
 public:  
   SwitchRelays(String _name, PinNumber start_Outpin, PinNumber stop_Outpin, CloudSwitch* _cloud_switch, PinNumber statusInpin, Preferences* _preferences, short interval  = 1000):
         start(_name+"SartRelay", start_Outpin, interval),
-        stop(_name+"StopRelay", stop_Outpin, interval), 
+        stop(_name+"StopRelay", stop_Outpin, interval),
         cloud_switch(_cloud_switch),
         status_in_pin(statusInpin),
         status(false), 
