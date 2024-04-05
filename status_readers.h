@@ -49,7 +49,6 @@ public:
 
   bool getStatus(short index)
   {
-    readInputsWithDigitalRead();
     return inputRegisters[index];
   }
 

@@ -52,7 +52,6 @@ public:
     pinMode(enableOutput, OUTPUT);
     digitalWrite(enableOutput, LOW);
     clearRegisters();
-    writeRegisters();
   }
 
   void setOutputMode(short pin_number) {}
@@ -60,7 +59,6 @@ public:
   void setHIGH(short index)
   {
     registers[index] = HIGH;
-    writeRegisters();
     Serial.print("AfterSettingHigh \n");
     for (int i = 0; i < numOfRegisterPins; ++i)
     {
@@ -72,7 +70,6 @@ public:
   void setLOW(short index)
   {
     registers[index] = LOW;
-    writeRegisters();
     Serial.print("AfterSettingLow \n");
     for (int i = 0; i < numOfRegisterPins; ++i)
     {

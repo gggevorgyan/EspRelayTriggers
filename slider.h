@@ -125,7 +125,7 @@ public:
       {
         *cloud_obj = current_position;
         preferences->putShort(name.c_str(), current_position);
-        Serial.printf("Saved %s state in flash memory %hu\n", name, current_position);
+        Serial.printf("Saved %s state into flash memory %hu\n", name, current_position);
       }
 
       last_status_check = millis();

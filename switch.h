@@ -57,9 +57,8 @@ public:
   void status_check() {
     if (elapsed_time(last_status_check) >= status_check_interval) {
       status = statusReader->getStatus(status_in_pin);
-      Serial.printf("Status of %s Pin %u\n", name, status);
-
       if (*cloud_switch != status) {
+        Serial.printf("Status of %s Pin %u\n", name, status);
         *cloud_switch = status;
         preferences->putBool(name.c_str(), status);
         Serial.printf("STATE SAVED TO FLASH MEMORY\n");

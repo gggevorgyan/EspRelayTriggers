@@ -58,6 +58,11 @@ StatusReader defaultStatusReader;
 //////////////// --- Sensors --- ////////////////
 #define TEMP_SENSOR_PIN 5
 
-void init_pins() {
+void init_pins()
+{
+#ifdef ES32A08_BOARD
+  defaultPinWriter.clearRegisters();
+  defaultPinWriter.writeRegisters();
+#endif
   pinMode(TEMP_SENSOR_PIN, INPUT);
 }

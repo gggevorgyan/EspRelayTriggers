@@ -92,6 +92,10 @@ void loop()
   ventilationSwitch.checkInTheLoop();
   irrigationSwitch.checkInTheLoop();
   window.checkInTheLoop();
+#ifdef ES32A08_BOARD
+  defaultPinWriter.writeRegisters();
+  defaultStatusReader.readInputsWithDigitalRead();
+#endif
 }
 
 /*
