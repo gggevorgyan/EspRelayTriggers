@@ -55,27 +55,28 @@ public:
   }
 
   void setOutputMode(short pin_number) {}
-
-  void setHIGH(short index)
+  void printRegisters(String prefix)
   {
-    registers[index] = HIGH;
-    Serial.print("AfterSettingHigh \n");
+#ifdef DEBUG_PRINT
+    Serial.print(prefix);
     for (int i = 0; i < numOfRegisterPins; ++i)
     {
       Serial.print(int(registers[i]));
     }
     Serial.print("\n");
+#endif
+  }
+
+  void setHIGH(short index)
+  {
+    registers[index] = HIGH;
+    printRegisters("AfterSettingHigh");
   }
 
   void setLOW(short index)
   {
     registers[index] = LOW;
-    Serial.print("AfterSettingLow \n");
-    for (int i = 0; i < numOfRegisterPins; ++i)
-    {
-      Serial.print(int(registers[i]));
-    }
-    Serial.print("\n");
+    printRegisters("AfterSettingLow");
   }
 
   void clearRegisters()
@@ -84,17 +85,12 @@ public:
     {
       registers[i] = LOW; // LOW;
     }
-
-    Serial.print("AfterClear \n");
-    for (int i = 0; i < numOfRegisterPins; ++i)
-    {
-      Serial.print(int(registers[i]));
-    }
+    printRegisters("After Clear Registers");
   }
 
   void writeRegisters()
   { //// Write register after being set, will be called in the loop
-    if (elapsed_time(last_checked) > 200)
+    if (elapsed_time(last_checked) > 100)
     {
       last_checked = millis();
       digitalWrite(register_clock_latch, LOW);

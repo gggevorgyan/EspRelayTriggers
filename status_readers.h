@@ -54,7 +54,7 @@ public:
 
   void readInputsWithDigitalRead()
   {
-    if (elapsed_time(last_checked) > 200)
+    if (elapsed_time(last_checked) > 100)
     {
       byte inputs = 0;
       digitalWrite(latchPin, HIGH);                  // disable input latching and enable shifting
