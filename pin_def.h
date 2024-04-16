@@ -22,8 +22,8 @@ StatusReader defaultStatusReader;
 #define VENTILATION_STOP_OUT_PIN 19
 ////////// --- WINDOW Control  Pins --- /////////
 #define WINDOW_UP_OUT_PIN 20
-#define WINDOW_DOWN_OUT_PIN 21
-#define WINDOW_STOP_OUT_PIN 22
+#define WINDOW_DOWN_OUT_PIN 22
+#define WINDOW_STOP_OUT_PIN 21
 
 // ------------------- STATUS INPUT INDEXES ---------------------//
 #define IRRIGATION_STATUS_IN_PIN 0
