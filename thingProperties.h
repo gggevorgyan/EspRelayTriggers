@@ -3,30 +3,36 @@
 #include <ArduinoIoTCloud.h>
 #include <Arduino_ConnectionHandler.h>
 
-const char DEVICE_LOGIN_NAME[] = "80301f0d-4e3a-4059-ae62-c38df9a23eab";
+//const char DEVICE_LOGIN_NAME[]  = "80301f0d-4e3a-4059-ae62-c38df9a23eab";
+const char DEVICE_LOGIN_NAME[]  = "39249989-eb90-412d-bb60-6931aabb54f6";
 
-const char SSID[] = SECRET_SSID;              // Network SSID (name)
-const char PASS[] = SECRET_OPTIONAL_PASS;     // Network password (use for WPA, or use as key for WEP)
-const char DEVICE_KEY[] = SECRET_DEVICE_KEY;  // Secret device password
+
+const char SSID[]               = SECRET_SSID;    // Network SSID (name)
+const char PASS[]               = SECRET_OPTIONAL_PASS;    // Network password (use for WPA, or use as key for WEP)
+const char DEVICE_KEY[]  = SECRET_DEVICE_KEY;    // Secret device password
 
 void onIrrigationSwitchChange();
 void onVentilationSwitchChange();
-void onWindowSliderChange();
+void onRightWindowSliderChange();
+void onLeftWindowSliderChange();
 void onTemperatureChange();
 
-CloudSwitch irrigation_switch;
-CloudSwitch ventilation_switch;
-CloudPercentage windowSlider;
+CloudSwitch irrigationSwitch;
+CloudSwitch ventilationSwitch;
+CloudPercentage rightWindowSlider;
+CloudPercentage leftWindowSlider;
 CloudTemperature temperature;
 
-void initProperties() {
+void initProperties(){
 
   ArduinoCloud.setBoardId(DEVICE_LOGIN_NAME);
   ArduinoCloud.setSecretDeviceKey(DEVICE_KEY);
-  ArduinoCloud.addProperty(irrigation_switch, READWRITE, ON_CHANGE, onIrrigationSwitchChange);
-  ArduinoCloud.addProperty(ventilation_switch, READWRITE, ON_CHANGE, onVentilationSwitchChange);
-  ArduinoCloud.addProperty(windowSlider, READWRITE, ON_CHANGE, onWindowSliderChange);
+  ArduinoCloud.addProperty(irrigationSwitch, READWRITE, ON_CHANGE, onIrrigationSwitchChange);
+  ArduinoCloud.addProperty(ventilationSwitch, READWRITE, ON_CHANGE, onVentilationSwitchChange);
+  ArduinoCloud.addProperty(rightWindowSlider, READWRITE, ON_CHANGE, onRightWindowSliderChange);
+  ArduinoCloud.addProperty(leftWindowSlider, READWRITE, ON_CHANGE, onLeftWindowSliderChange);
   ArduinoCloud.addProperty(temperature, READWRITE, ON_CHANGE, onTemperatureChange);
+
 }
 
 WiFiConnectionHandler ArduinoIoTPreferredConnection(SSID, PASS);

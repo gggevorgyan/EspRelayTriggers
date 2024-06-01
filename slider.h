@@ -50,9 +50,9 @@ public:
         slider_range(_slider_range),
         step_time(_start_to_end_duration / _slider_range),
 
-        forward(_name + "FWDRelay", forward_Outpin, _pinWriter, interval),
-        back(_name + "BCKRelay", back_Outpin, _pinWriter, interval),
-        stop(_name + "STPRelay", stop_Outpin, _pinWriter, interval),
+        forward(_name + "FWDRly", forward_Outpin, _pinWriter, interval),
+        back(_name + "BCKRly", back_Outpin, _pinWriter, interval),
+        stop(_name + "STPRly", stop_Outpin, _pinWriter, interval),
 
         cloud_obj(_cloud_obj),
 

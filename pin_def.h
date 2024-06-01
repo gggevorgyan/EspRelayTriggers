@@ -14,22 +14,37 @@ typedef IsrStatusReader<8> StatusReader;
 
 PinWriter defaultPinWriter(SER_Pin, RCLK_Pin, SRCLK_Pin, OE_Pin);
 StatusReader defaultStatusReader;
+// The Valid range is from 16-23 8 realys
+
 ////////// --- Irrigation Control  Pins --- /////////
-#define IRRIGATION_START_OUT_PIN 16
-#define IRRIGATION_STOP_OUT_PIN 17
+#define IRRIGATION_START_OUT_PIN 14
+#define IRRIGATION_STOP_OUT_PIN 15
 ////////// --- Ventilation Control  Pins --- /////////
-#define VENTILATION_START_OUT_PIN 18
-#define VENTILATION_STOP_OUT_PIN 19
+#define VENTILATION_START_OUT_PIN 22
+#define VENTILATION_STOP_OUT_PIN 23
 ////////// --- WINDOW Control  Pins --- /////////
-#define WINDOW_UP_OUT_PIN 20
-#define WINDOW_DOWN_OUT_PIN 22
-#define WINDOW_STOP_OUT_PIN 21
+// Left  UP 1, Stop 8, Down 7
+#define L_WINDOW_UP_OUT_PIN 16
+#define L_WINDOW_DOWN_OUT_PIN 22
+#define L_WINDOW_STOP_OUT_PIN 23
+
+// Right UP 4, Stop 3, Down 2 
+#define R_WINDOW_UP_OUT_PIN 19
+#define R_WINDOW_DOWN_OUT_PIN 17
+#define R_WINDOW_STOP_OUT_PIN 18
 
 // ------------------- STATUS INPUT INDEXES ---------------------//
-#define IRRIGATION_STATUS_IN_PIN 0
-#define VENTILATION_STATUS_IN_PIN 1
-#define WINDOW_UP_STATUS_IN_PIN 2
-#define WINDOW_DOWN_STATUS_IN_PIN 3
+
+// LEft Up IN1 , Down IN2
+#define L_WINDOW_UP_STATUS_IN_PIN 0
+#define L_WINDOW_DOWN_STATUS_IN_PIN 1
+
+// Right Up IN3 , Down IN4
+#define R_WINDOW_UP_STATUS_IN_PIN 2
+#define R_WINDOW_DOWN_STATUS_IN_PIN 3
+
+#define IRRIGATION_STATUS_IN_PIN 5
+#define VENTILATION_STATUS_IN_PIN 4
 
 #else
 typedef DefaultPinWriter PinWriter;
@@ -58,8 +73,7 @@ StatusReader defaultStatusReader;
 //////////////// --- Sensors --- ////////////////
 #define TEMP_SENSOR_PIN 5
 
-void init_pins()
-{
+void init_pins() {
 #ifdef ES32A08_BOARD
   defaultPinWriter.clearRegisters();
   defaultPinWriter.writeRegisters();
